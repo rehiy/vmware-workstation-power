@@ -1,0 +1,10 @@
+{
+    "name": "vmware-run",
+    "description": "vmware remote manager",
+    "homepage": "https://www.anrip.com",
+    "version": "1.2.2",
+    "license": "MIT License",
+    "dependencies": {
+        "webox-node": "~1.2.2"
+    }
+}

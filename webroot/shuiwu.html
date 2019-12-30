@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN">
+
+<head>
+    <title>虚拟机管理</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style/main.css" />
+    <script src="libs/client.js"></script>
+</head>
+</head>
+
+<body class="cowry">
+    <p class="stat">
+        状态：<em>...</em>
+    </p>
+
+    <p class="rdp">
+        RDP： home.anrip.com:2215
+    </p>
+
+    <p class="start">
+        <button onclick="vmrun.start()" disabled>开机</button>
+        <em></em>
+    </p>
+    <p class="stop">
+        <button onclick="vmrun.stop()" disabled>关机</button>
+        <em></em>
+    </p>
+
+    <script type="text/javascript">
+        vmid = 'shuiwu', vmrun.stat();
+        setInterval(vmrun.stat, 5000);
+    </script>
+</body>
+
+</html>
