@@ -27,13 +27,13 @@ if not "%1" == "" (
 ::独立控制台模式
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-title Webox.VMRest 服务控制台
+title Webox.VMRun 服务控制台
 
 echo.
 :?
   cls && echo.
   set SPC=          -
-  echo %SPC%----- Webox.VMRest 服务控制台 ----------------------------
+  echo %SPC%----- Webox.VMRun 服务控制台 -----------------------------
   echo %SPC%-                                                       --
   echo %SPC%-    1.安装服务       2.重启服务       3.卸载服务       --
   echo %SPC%-                                                       --
@@ -72,50 +72,50 @@ echo.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :app_runtime
-  set scName=Webox-VMRest
+  set scName=Webox-VMRun
   goto :EOF
 
 :app_create
   if not exist "%mconf%" (
-    echo. && echo 错误: VMRest配置文件不存在...
+    echo. && echo 错误: VMRun配置文件不存在...
     goto :EOF
   )
-  echo. && echo 正在安装VMRest服务...
+  echo. && echo 正在安装VMRun服务...
   %xnssm% install %scName% %mroot%\bin\node.exe
-  %xnssm% set %scName% DisplayName "Webox VMRest Server" >nul
+  %xnssm% set %scName% DisplayName "Webox VMRun Server" >nul
   %xnssm% set %scName% AppParameters %mconf% >nul
   call :app_start
   goto :EOF
 
 :app_remove
   call :app_stop
-  echo. && echo 正在卸载VMRest服务...
+  echo. && echo 正在卸载VMRun服务...
   %xnssm% remove %scName% confirm
   goto :EOF
 
 :app_start
-  echo. && echo 正在启动VMRest服务...
+  echo. && echo 正在启动VMRun服务...
   %xnssm% start %scName%
   call :app_progress
   goto :EOF
 
 :app_stop
-  echo. && echo 正在停止VMRest服务...
+  echo. && echo 正在停止VMRun服务...
   %xnssm% stop %scName%
   goto :EOF
 
 :app_reboot
-  echo. && echo 正在重启VMRest服务...
+  echo. && echo 正在重启VMRun服务...
   %xnssm% restart %scName%
   call :app_progress
   goto :EOF
 
 :app_progress
-  echo. && echo 正在检查VMRest进程...
+  echo. && echo 正在检查VMRun进程...
   ping 127.0.0.1 -n 5 >nul
   tasklist | findstr node.exe >nul
   if %errorlevel% neq 0 (
-    echo 错误: VMRest启动失败
+    echo 错误: VMRun启动失败
   )
   goto :EOF
 
